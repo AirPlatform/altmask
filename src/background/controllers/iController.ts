@@ -1,10 +1,10 @@
-import QryptoController from '.';
+import AltmaskController from '.';
 
 export default abstract class IController {
-  protected main: QryptoController;
+  protected main: AltmaskController;
   private name: string;
 
-  constructor(name: string, main: QryptoController) {
+  constructor(name: string, main: AltmaskController) {
     this.name = name;
     this.main = main;
     this.registerController();

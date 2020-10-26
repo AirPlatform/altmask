@@ -424,6 +424,12 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+
+### LOCKS
+
+yarn.lock
+package-lock.json
+
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.

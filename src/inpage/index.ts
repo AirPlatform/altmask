@@ -1,14 +1,14 @@
 import { IExtensionAPIMessage, IRPCCallRequest } from '../types';
 import { TARGET_NAME, API_TYPE } from '../constants';
-import { QryptoRPCProvider } from './QryptoRPCProvider';
+import { AltmaskRPCProvider } from './AltmaskRPCProvider';
 import { showSignTxWindow } from './window';
 import { isMessageNotValid } from '../utils';
 import { IInpageAccountWrapper } from '../types';
 
-const qryptoProvider: QryptoRPCProvider = new QryptoRPCProvider();
+const altmaskProvider: AltmaskRPCProvider = new AltmaskRPCProvider();
 
-let qrypto: any = {
-  rpcProvider: qryptoProvider,
+let altmask: any = {
+  rpcProvider: altmaskProvider,
   account: null,
 };
 let signTxUrl: string;
@@ -18,17 +18,17 @@ window.addEventListener('message', handleInpageMessage, false);
 
 // expose apis
 Object.assign(window, {
-  qrypto,
+  altmask,
 });
 
 function handlePortDisconnected() {
-  qrypto = undefined;
-  Object.assign(window, { qrypto });
+  altmask = undefined;
+  Object.assign(window, { altmask });
   window.removeEventListener('message', handleInpageMessage, false);
 }
 
 /**
- * Handles the sendToContract request originating from the QryptoRPCProvider and opens the sign tx window.
+ * Handles the sendToContract request originating from the AltmaskRPCProvider and opens the sign tx window.
  * @param request SendToContract request.
  */
 const handleSendToContractRequest = (request: IRPCCallRequest) => {
@@ -49,14 +49,14 @@ function handleInpageMessage(event: MessageEvent) {
       handleSendToContractRequest(message.payload);
       break;
     case API_TYPE.RPC_RESPONSE:
-      return qryptoProvider.handleRpcCallResponse(message.payload);
-    case API_TYPE.SEND_INPAGE_QRYPTO_ACCOUNT_VALUES:
+      return altmaskProvider.handleRpcCallResponse(message.payload);
+    case API_TYPE.SEND_INPAGE_ALTMASK_ACCOUNT_VALUES:
       const accountWrapper: IInpageAccountWrapper = message.payload;
-      qrypto.account = accountWrapper.account;
+      altmask.account = accountWrapper.account;
       if (accountWrapper.error) {
         throw accountWrapper.error;
       } else {
-        console.log('window.qrypto.account has been updated,\n Reason:',  accountWrapper.statusChangeReason);
+        console.log('window.altmask.account has been updated,\n Reason:',  accountWrapper.statusChangeReason);
       }
       break;
     case API_TYPE.PORT_DISCONNECTED:

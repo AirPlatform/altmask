@@ -1,5 +1,5 @@
-import QryptoController from './controllers';
+import AltmaskController from './controllers';
 
 // Add instance to window for debugging
-const controller = new QryptoController();
+const controller = new AltmaskController();
 Object.assign(window, { controller });

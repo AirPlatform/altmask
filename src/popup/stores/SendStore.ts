@@ -46,7 +46,7 @@ export default class SendStore {
   }
   @computed public get receiverFieldError(): string | undefined {
     return isValidAddress(this.app.sessionStore.isMainNet, this.receiverAddress)
-      ? undefined : 'Not a valid Qtum address';
+      ? undefined : 'Not a valid Htmlcoin address';
   }
   @computed public get amountFieldError(): string | undefined {
     return this.maxAmount && isValidAmount(Number(this.amount), this.maxAmount) ? undefined : 'Not a valid amount';
@@ -62,7 +62,7 @@ export default class SendStore {
   }
   @computed public get maxAmount(): number | undefined {
     if (this.token) {
-      if (this.token.symbol === 'QTUM') {
+      if (this.token.symbol === 'HTML') {
         return this.maxQtumSend;
       }
       return this.token!.balance;
@@ -81,7 +81,7 @@ export default class SendStore {
     chrome.runtime.onMessage.addListener(this.handleMessage);
     chrome.runtime.sendMessage({ type: MESSAGE_TYPE.GET_QRC_TOKEN_LIST }, (response: any) => {
       this.tokens = response;
-      this.tokens.unshift(new QRCToken('Qtum Token', 'QTUM', 8, ''));
+      this.tokens.unshift(new QRCToken('HTML Token', 'HTML', 8, ''));
       this.tokens[0].balance = this.app.sessionStore.info ? this.app.sessionStore.info.balance : undefined;
       this.token = this.tokens[0];
     });
@@ -111,7 +111,7 @@ export default class SendStore {
     }
 
     this.sendState = SEND_STATE.SENDING;
-    if (this.token.symbol === 'QTUM') {
+    if (this.token.symbol === 'HTML') {
       chrome.runtime.sendMessage({
         type: MESSAGE_TYPE.SEND_TOKENS,
         receiverAddress: this.receiverAddress,

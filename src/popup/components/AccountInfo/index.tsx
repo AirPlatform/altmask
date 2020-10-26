@@ -40,7 +40,7 @@ class AccountInfo extends Component<WithStyles & IProps, {}> {
         <Typography className={classes.address}>{info.addrStr}</Typography>
         <div className={classes.amountContainer}>
           <Typography className={classes.tokenAmount}>{info.balance}</Typography>
-          <Typography className={classes.token}>QTUM</Typography>
+          <Typography className={classes.token}>HTML</Typography>
           {hasRightArrow && <KeyboardArrowRight className={classes.rightArrow} />}
         </div>
         <Typography className={classes.balanceUSD}>{`${qtumBalanceUSD} ${networkBalAnnotation}`}</Typography>

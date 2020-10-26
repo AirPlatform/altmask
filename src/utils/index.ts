@@ -1,5 +1,5 @@
 import { isFinite } from 'lodash';
-import { validatePrivateKey } from 'qtumjs-wallet';
+import { validatePrivateKey } from 'althashjs-wallet';
 
 import { TARGET_NAME } from '../constants';
 import { IExtensionMessageData } from '../types';
@@ -40,9 +40,9 @@ export const isValidAddress = (isMainNet: boolean, address?: string) => {
     return false;
   }
   if (isMainNet) {
-    return address.startsWith('Q');
+    return address.startsWith('H');
   }
-  return address.startsWith('q');
+  return address.startsWith('h');
 };
 
 export const isValidPrivateKey = (address?: string) => {

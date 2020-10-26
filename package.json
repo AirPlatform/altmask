@@ -1,6 +1,6 @@
 {
-  "name": "qrypto",
-  "private": true,
+  "name": "altmask",
+  "private": false,
   "scripts": {
     "clean": "rm -rf dist",
     "start": "yarn clean && mkdir dist && ./scripts/create-empty-thunk.sh && webpack --config webpack.dev.config.js --watch --devtool eval-cheap-module-source-map & yarn css-types -w",
@@ -44,7 +44,7 @@
     "ts-loader": "^4.4.2",
     "tslint": "^5.9.1",
     "tslint-loader": "^3.6.0",
-    "typescript": "^2.7.2",
+    "typescript": "^3.6.5",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
     "web-ext-types": "^2.0.1",
@@ -71,11 +71,28 @@
     "mobx-react-router": "^4.0.4",
     "moment": "^2.22.2",
     "qrcode.react": "^0.8.0",
-    "qtumjs-wallet": "^0.2.1",
-    "qweb3": "^1.1.0",
+    "althashjs-wallet": "^0.2.2",
+    "altweb3": "^1.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "secp256k1": "^3.5.0",
+    "yarn": "1.22.5",
     "wif": "^2.0.6"
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.org/machado-rev/altmask.svg?branch=master)](https://travis-ci.org/machado-rev/altmask)",
+  "version": "1.0.5",
+  "main": "webpack.base.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/machado-rev/altmask.git"
+  },
+  "keywords": [
+    "altmask"
+  ],
+  "author": "Leandro Machado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/machado-rev/altmask/issues"
+  },
+  "homepage": "https://github.com/machado-rev/altmask#readme"
 }

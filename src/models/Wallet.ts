@@ -1,9 +1,9 @@
 import { action } from 'mobx';
-import { Wallet as QtumWallet, Insight, WalletRPCProvider } from 'qtumjs-wallet';
+import { Wallet as QtumWallet, Insight, WalletRPCProvider } from 'althashjs-wallet';
 import deepEqual from 'deep-equal';
 
 import { ISigner } from '../types';
-import { ISendTxOptions } from 'qtumjs-wallet/lib/tx';
+import { ISendTxOptions } from 'althashjs-wallet/lib/tx';
 import { RPC_METHOD, NETWORK_NAMES } from '../constants';
 
 export default class Wallet implements ISigner {
@@ -55,13 +55,13 @@ export default class Wallet implements ISigner {
     return false;
   }
 
-  // @param amount: (unit - whole QTUM)
+  // @param amount: (unit - whole HTML)
   public send = async (to: string, amount: number, options: ISendTxOptions): Promise<Insight.ISendRawTxResult> => {
     if (!this.qjsWallet) {
       throw Error('Cannot send without wallet.');
     }
 
-    // convert amount units from whole QTUM => SATOSHI QTUM
+    // convert amount units from whole HTML => SATOSHI HTML
     return await this.qjsWallet!.send(to, amount * 1e8, { feeRate: options.feeRate });
   }
 
@@ -96,6 +96,6 @@ export default class Wallet implements ISigner {
    */
   private maxQtumSendToAddress = (networkName: string) => {
     return networkName === NETWORK_NAMES.MAINNET ?
-      'QN8HYBmMxVyf7MQaDvBNtneBN8np5dZwoW' : 'qLJsx41F8Uv1KFF3RbrZfdLnyWQzvPdeF9';
+      'Hu3K6PrHHfT3dsnrKQXdMTzjYriqiBZsgE' : 'hZAzzR9UHkwCufFzK8m6wmtTuuc2GMambj';
   }
 }

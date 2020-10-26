@@ -1,13 +1,13 @@
-import QryptoController from '.';
+import AltmaskController from '.';
 import IController from './iController';
-import { MESSAGE_TYPE, RESPONSE_TYPE, QRYPTO_ACCOUNT_CHANGE } from '../../constants';
+import { MESSAGE_TYPE, RESPONSE_TYPE, ALTMASK_ACCOUNT_CHANGE } from '../../constants';
 
 export default class SessionController extends IController {
   public sessionTimeout?: number = undefined;
 
   private sessionLogoutInterval: number = 600000; // in ms
 
-  constructor(main: QryptoController) {
+  constructor(main: AltmaskController) {
     super('session', main);
 
     chrome.runtime.onMessage.addListener(this.handleMessage);
@@ -37,7 +37,7 @@ export default class SessionController extends IController {
   public clearSession = () => {
     this.main.account.resetAccount();
     this.main.token.resetTokenList();
-    this.main.inpageAccount.sendInpageAccountAllPorts(QRYPTO_ACCOUNT_CHANGE.LOGOUT);
+    this.main.inpageAccount.sendInpageAccountAllPorts(ALTMASK_ACCOUNT_CHANGE.LOGOUT);
   }
 
   private clearAllIntervalsExceptAccount = () => {

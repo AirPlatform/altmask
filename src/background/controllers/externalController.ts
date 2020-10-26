@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import QryptoController from '.';
+import AltmaskController from '.';
 import IController from './iController';
 import { MESSAGE_TYPE } from '../../constants';
 
@@ -15,7 +15,7 @@ export default class ExternalController extends IController {
   private getPriceInterval?: number = INIT_VALUES.getPriceInterval;
   private qtumPriceUSD: number = INIT_VALUES.qtumPriceUSD;
 
-  constructor(main: QryptoController) {
+  constructor(main: AltmaskController) {
     super('external', main);
     this.initFinished();
   }
@@ -51,8 +51,8 @@ export default class ExternalController extends IController {
   */
   private getQtumPrice = async () => {
     try {
-      const jsonObj = await axios.get('https://api.coinmarketcap.com/v2/ticker/1684/');
-      this.qtumPriceUSD = jsonObj.data.data.quotes.USD.price;
+      const jsonObj = await axios.get('https://api.hitbtc.com/api/2/public/ticker/htmlusd/');
+      this.qtumPriceUSD = jsonObj.data.data.quotes.last;
 
       if (this.main.account.loggedInAccount
         && this.main.account.loggedInAccount.wallet

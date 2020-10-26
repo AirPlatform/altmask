@@ -35,13 +35,13 @@ function getHeight(element: HTMLElement) {
 export function showModal(width: number, height: number, style: any = {}, src?: string): Promise<HTMLIFrameElement> {
   const iframe = document.createElement('iframe');
 
-  addClass(iframe, 'qrypto-extension-modal');
+  addClass(iframe, 'altmask-extension-modal');
 
   const backdrop = document.createElement('div');
-  addClass(backdrop, 'qrypto-extension-modal-backdrop');
+  addClass(backdrop, 'altmask-extension-modal-backdrop');
 
   const html = document.documentElement;
-  addClass(html, 'qrypto-extension-modal-wrap');
+  addClass(html, 'altmask-extension-modal-wrap');
 
   const body = document.querySelector('body')!;
 
@@ -74,14 +74,14 @@ export function showModal(width: number, height: number, style: any = {}, src?: 
 }
 
 export function closeModal() {
-  const iframe = document.querySelector('iframe.qrypto-extension-modal');
+  const iframe = document.querySelector('iframe.altmask-extension-modal');
 
   if (iframe) {
     iframe.remove();
-    const backdrop = document.querySelector('.qrypto-extension-modal-backdrop');
+    const backdrop = document.querySelector('.altmask-extension-modal-backdrop');
 
     if (backdrop) { backdrop.remove(); }
 
-    removeClass(document.documentElement, 'qrypto-extension-modal-wrap');
+    removeClass(document.documentElement, 'altmask-extension-modal-wrap');
   }
 }

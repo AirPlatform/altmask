@@ -1,5 +1,5 @@
 import { observable, action, computed } from 'mobx';
-import { Insight } from 'qtumjs-wallet';
+import { Insight } from 'althashjs-wallet';
 import { isUndefined } from 'lodash';
 
 import { MESSAGE_TYPE, NETWORK_NAMES } from '../../constants';
@@ -18,7 +18,8 @@ export default class SessionStore {
   @observable public loggedInAccountName?: string = INIT_VALUES.loggedInAccountName;
   @observable public info?: Insight.IGetInfo = INIT_VALUES.info;
   @computed public get qtumBalanceUSD() {
-    return isUndefined(this.qtumUSD) ? 'Loading...' : `$${this.qtumUSD} USD`;
+    return isUndefined(this.qtumUSD) ? '' : '';
+    //return isUndefined(this.qtumUSD) ? 'Loading...' : `$${this.qtumUSD} USD`;
   }
   @computed public get networkName() {
     return this.networks[this.networkIndex].name;
