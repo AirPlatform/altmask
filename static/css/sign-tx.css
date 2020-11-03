@@ -43,7 +43,7 @@ body {
 .heading {
   font-size: 12px;
   font-weight: bold;
-  color: rgba(15, 104, 168, 0.8);
+  color: rgb(0, 94, 161));
   margin: 0;
 }
 
@@ -81,7 +81,7 @@ body {
 .raw-tx {
   font-size: 10px;
   line-height: 16px;
-  color: rgba(230, 57, 70, 0.5);
+  color: rgb(0, 4, 247);
 }
 
 .button {
@@ -100,11 +100,11 @@ body {
 }
 
 .button-white {
-  color: #5539DF;
+  color: #0F68A8;
   background: #FFFFFF;
 }
 
 .button-blue {
   color: #FFFFFF;
-  background: linear-gradient(300.29deg, #8E6BF1 -9.7%, #5539DF 85.28%);
+  background: linear-gradient(300.29deg, #0F68A8 -9.7%, #0F68A8 85.28%);
 }
